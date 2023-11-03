@@ -1,0 +1,615 @@
+$planets: (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune);
+
+$color: (
+  Mercury: #419ebb,
+  Venus: #eda249,
+  Earth: #6f2ed6,
+  Mars: #d14c32,
+  Jupiter: #d83a34,
+  Saturn: #cd5120,
+  Uranus: #1ec2a4,
+  Neptune: #2d68f0,
+);
+
+$mobile-widths: (
+  Mercury: 6.937rem,
+  Venus: 9.625rem,
+  Earth: 10.812rem,
+  Mars: 8.062rem,
+  Jupiter: 14rem,
+  Saturn: 16rem,
+  Uranus: 11rem,
+  Neptune: 10.812rem,
+);
+
+$tablet-widths: (
+  Mercury: 11.5rem,
+  Venus: 15.812rem,
+  Earth: 17.812rem,
+  Mars: 13.312rem,
+  Jupiter: 23.062rem,
+  Saturn: 26.375rem,
+  Uranus: 18.125rem,
+  Neptune: 17.812rem,
+);
+
+$desktop-widths: (
+  Mercury: 15.925rem,
+  Venus: 22rem,
+  Earth: 24.75rem,
+  Mars: 18.5rem,
+  Jupiter: 30rem,
+  Saturn: 33rem,
+  Uranus: 25.2rem,
+  Neptune: 24.75rem,
+);
+
+$desktop-widths-secondary: (
+  Mercury: 18.125rem,
+  Venus: 25rem,
+  Earth: 28.125rem,
+  Mars: 21rem,
+  Jupiter: 36.375rem,
+  Saturn: 41.631rem,
+  Uranus: 28.625rem,
+  Neptune: 28.125rem,
+);
+
+$surface-image-desktop: (
+  Mercury: -3.7rem,
+  Venus: -2.75rem,
+  Earth: -3.05rem,
+  Mars: -3.45rem,
+  Jupiter: -1.2rem,
+  Saturn: -1.75rem,
+  Uranus: -3rem,
+  Neptune: -3.05rem,
+);
+
+$mobile-margins: (
+  Mercury: 5.937rem 0 6.125rem,
+  Venus: 4.625rem 0 4.75rem,
+  Earth: 4rem 0 4.187rem,
+  Mars: 5.437rem 0 5.5rem,
+  Jupiter: 2.437rem 0 2.562rem,
+  Saturn: 1.5rem 0 1.5rem,
+  Uranus: 3.937rem 0 4.062rem,
+  Neptune: 4rem 0 4.187rem,
+);
+
+$tablet-margins: (
+  Mercury: 9.125rem 0 8.125rem,
+  Venus: 7rem 0 5.937rem,
+  Earth: 6rem 0 4.937rem,
+  Mars: 8.25rem 0 7.187rem,
+  Jupiter: 3.375rem 0 2.312rem,
+  Saturn: 1.687rem 0 0.687rem,
+  Uranus: 5.812rem 0 4.812rem,
+  Neptune: 6rem 0 4.937rem,
+);
+
+$desktop-margins: (
+  Mercury: 7.25rem 12rem 8.437rem 4.5rem,
+  Venus: 3.812rem 8rem 5rem 2.5rem,
+  Earth: 2.25rem 7rem 3.437rem 0.8rem,
+  Mars: 5.812rem 10rem 7rem 3rem,
+  Jupiter: 2rem 2.5rem -0.687rem 0,
+  Saturn: -3.503rem 1rem -5.003rem -2.5rem,
+  Uranus: 2rem 7rem 3.187rem 1rem,
+  Neptune: 2.25rem 7rem 3.437rem 0.8rem,
+);
+
+$desktop-margins-secondary: (
+  Mercury: 7.25rem 18.75rem 8.437rem 10.625rem,
+  Venus: 3.812rem 15.312rem 5rem 7.187rem,
+  Earth: 2.25rem 13.75rem 3.437rem 5.625rem,
+  Mars: 5.812rem 17.312rem 7rem 9.187rem,
+  Jupiter: -1.875rem 9.625rem -0.687rem 1.5rem,
+  Saturn: -3.503rem 6.996rem -4.315rem -1.128rem,
+  Uranus: 2rem 13.5rem 3.187rem 5.375rem,
+  Neptune: 2.25rem 13.75rem 3.437rem 5.625rem,
+);
+
+@keyframes openHover {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+main {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+
+  .top-section {
+    display: flex;
+    flex-direction: column;
+
+    .info-container {
+      @each $key in $planets {
+        .#{$key}-buttons {
+          display: none;
+        }
+      }
+
+      .planet-info {
+        color: white;
+
+        h2 {
+          font-family: Antonio;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 40px;
+          line-height: 52px;
+          text-align: center;
+          text-transform: uppercase;
+        }
+
+        .desc {
+          font-family: Spartan;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 11px;
+          line-height: 22px;
+          text-align: center;
+          margin: 1rem 1.5rem 2rem;
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.75rem;
+
+          p {
+            text-align: center;
+            font-family: Spartan;
+            font-size: 12px;
+            line-height: 25px;
+            color: #ffffff;
+            mix-blend-mode: normal;
+            opacity: 0.5;
+          }
+
+          a {
+            color: white;
+            margin-right: 0.25rem;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 25px;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    @each $key in $planets {
+      .#{$key}-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .planet-img {
+          height: auto;
+        }
+
+        .surface {
+          display: none;
+        }
+
+        .surface.active {
+          display: initial;
+          position: absolute;
+          width: 90px;
+          height: 110px;
+          transform: translateY(11.25rem);
+        }
+      }
+    }
+
+    @each $key, $val in $mobile-widths {
+      .#{$key}-container {
+        .planet-img {
+          width: $val;
+          height: $val;
+        }
+      }
+    }
+
+    @each $key, $val in $mobile-margins {
+      .#{$key}-container {
+        .planet-img {
+          margin: $val;
+        }
+      }
+    }
+
+    @each $key, $val in $color {
+      .#{$key}-buttons.mobile {
+        display: flex;
+        border-bottom: 1px solid rgba(151, 151, 151, 0.2);
+        justify-content: space-between;
+        padding: 0 1.85rem;
+
+        button {
+          border: none;
+          background-color: transparent;
+          font-family: Spartan;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 9px;
+          line-height: 10px;
+          text-align: center;
+          letter-spacing: 1.92857px;
+          text-transform: uppercase;
+          color: white;
+          margin: 1.25rem 0 1.25rem;
+          opacity: 0.5;
+        }
+
+        button:hover {
+          cursor: pointer;
+        }
+
+        .button.active {
+          opacity: 1;
+        }
+
+        .button.active::after {
+          content: "";
+          height: 0.25rem;
+          width: 80px;
+          background-color: $val;
+          display: block;
+          position: absolute;
+          top: 7.25rem;
+          margin-left: -0.35rem;
+          animation: openHover 300ms;
+        }
+      }
+    }
+  }
+
+  .planet-stats {
+    ul {
+      padding: 0 1.5rem 2.938rem;
+      flex-direction: column;
+      width: 100%;
+
+      .rotate {
+        margin-top: 0;
+      }
+
+      .temp {
+        margin-bottom: 0;
+      }
+
+      li {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.5rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-sizing: border-box;
+        padding: 0rem 1.5rem;
+        width: 100%;
+
+        h3 {
+          font-size: 0.5rem;
+          line-height: 1rem;
+          letter-spacing: 0.727273px;
+          text-transform: uppercase;
+          mix-blend-mode: normal;
+          opacity: 0.5;
+          font-family: Spartan;
+          font-style: normal;
+          font-weight: 700;
+        }
+
+        p {
+          text-transform: uppercase;
+          font-size: 1.25rem;
+          line-height: 1.625rem;
+          letter-spacing: -0.75px;
+          font-family: Antonio;
+          font-style: normal;
+          font-weight: normal;
+          margin: 0.563rem 0rem 0.813rem 0rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 43.75rem) {
+  main {
+    .top-section {
+      @each $key in $planets {
+        .#{$key}-buttons.mobile {
+          display: none;
+        }
+      }
+
+      .info-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2.5rem;
+
+        @each $key, $val in $color {
+          .#{$key}-buttons {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+
+            button {
+              min-width: 17.5625rem;
+              text-align: start;
+              font-family: Spartan;
+              font-weight: bold;
+              font-size: 0.5625rem;
+              line-height: 1.5625rem;
+              letter-spacing: 1.92857px;
+              text-transform: uppercase;
+              border: none;
+              background-color: transparent;
+              color: #ffffff;
+              border: 1px solid rgba(151, 151, 151, 0.2);
+              padding: 0.5rem 0 0.5rem 1.25rem;
+              margin-top: 0.5rem;
+              margin-bottom: 0.5rem;
+              transition: all 100ms ease-in;
+
+              span {
+                opacity: 0.5;
+                margin-right: 1rem;
+              }
+            }
+
+            button:hover {
+              background-color: #313148;
+              border-color: #313148;
+              cursor: pointer;
+            }
+
+            .button.active {
+              background-color: $val;
+              border-color: $val;
+            }
+          }
+        }
+
+        .planet-info {
+          text-align: left;
+
+          h2 {
+            text-align: initial;
+          }
+
+          .desc {
+            text-align: initial;
+            margin-left: 0;
+            margin-right: 0;
+            padding-right: 4.3125rem;
+          }
+
+          .link {
+            justify-content: start;
+          }
+        }
+      }
+
+      @each $key in $planets {
+        .#{$key}-container {
+          .surface {
+            display: none;
+          }
+
+          .surface.active {
+            width: 6.875rem;
+            height: auto;
+            transform: translateY(18rem);
+          }
+        }
+      }
+
+      @each $key, $val in $tablet-widths {
+        .#{$key}-container {
+          .planet-img {
+            width: $val;
+            height: $val;
+          }
+        }
+      }
+
+      @each $key, $val in $tablet-margins {
+        .#{$key}-container {
+          .planet-img {
+            margin: $val;
+          }
+        }
+      }
+    }
+
+    .planet-stats {
+      padding-bottom: 2.25rem;
+      ul {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        justify-content: center;
+
+        li {
+          flex-direction: column;
+          margin: 0 0.34375rem;
+          padding: 1rem 0 1.1875rem 0.938rem;
+          align-items: initial;
+          max-width: 10.25rem;
+
+          h3 {
+            text-align: initial;
+          }
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+
+        .temp {
+          margin-right: 0;
+        }
+
+        .rotate {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 57rem) {
+  main {
+    .top-section {
+      flex-direction: row;
+      justify-content: center;
+      margin: 7.875rem 0 5.4375rem;
+
+      .info-container {
+        flex-direction: column;
+        padding: 0;
+
+        .planet-info {
+          h2 {
+            font-size: 80px;
+            line-height: 104px;
+          }
+
+          .desc {
+            font-size: 0.875rem;
+            line-height: 1.5625rem;
+            padding: 0;
+            max-width: 21.875rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .link {
+            margin-bottom: 0;
+          }
+        }
+
+        @each $key in $planets {
+          .#{$key}-buttons {
+            button {
+              width: 21.875rem;
+            }
+          }
+        }
+      }
+
+      @each $key in $planets {
+        .#{$key}-container {
+          width: initial;
+
+          .surface.active {
+            width: 10.187rem;
+            height: auto;
+            transform: translateY(19.5rem);
+          }
+        }
+      }
+
+      @each $key, $val in $surface-image-desktop {
+        .#{$key}-container {
+          .surface.active {
+            margin-left: $val;
+          }
+        }
+      }
+
+      @each $key, $val in $desktop-widths {
+        .#{$key}-container {
+          .planet-img {
+            width: $val;
+            height: $val;
+          }
+        }
+      }
+
+      @each $key, $val in $desktop-margins {
+        .#{$key}-container {
+          .planet-img {
+            margin: $val;
+          }
+        }
+      }
+    }
+
+    .planet-stats {
+      padding-bottom: 0;
+      ul {
+        li {
+          max-width: 12rem;
+          margin: 0 1.125rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 71.875rem) {
+  main {
+    .top-section {
+      @each $key, $val in $desktop-widths-secondary {
+        .#{$key}-container {
+          .planet-img {
+            width: $val;
+            height: $val;
+          }
+
+          .surface.active {
+            margin-left: -4rem;
+            transform: translateY(21.25rem);
+          }
+        }
+      }
+
+      @each $key, $val in $desktop-margins-secondary {
+        .#{$key}-container {
+          .planet-img {
+            margin: $val;
+          }
+        }
+      }
+    }
+
+    .planet-stats {
+      padding-bottom: 0;
+
+      ul {
+        padding-bottom: 3.5rem;
+
+        li {
+          max-width: 15.9375rem;
+          padding: 1.25rem 0 1.6875rem 1.4375rem;
+          margin: 0 0.937rem;
+
+          h3 {
+            font-size: 0.6875rem;
+            line-height: 1.5625rem;
+            letter-spacing: 1px;
+          }
+
+          p {
+            font-size: 2.5rem;
+            line-height: 3.25rem;
+            letter-spacing: -1.5px;
+          }
+        }
+      }
+    }
+  }
+}

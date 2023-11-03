@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-image: url("./background-stars.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #070724;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  background-color: #070724;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(196, 196, 196, 0.062);
+  border-radius: 10px;
+}
